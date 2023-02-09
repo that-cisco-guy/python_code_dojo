@@ -15,9 +15,19 @@ def show(friend_id):
     one_friend = Friend.get_one(friend_id)
     return render_template("show.html", friend = one_friend)
 
-@app.route('/friends/create', methods = ['post'])
+@app.route('/friends/create', methods = ['POST'])
 def create_friend():
     Friend.save(request.form)
+    return redirect('/')
+
+@app.route('/friends/update', methods = ['POST'])
+def update():
+    Friend.update(request.form)
+    return redirect('/')
+
+@app.route('/friends/delete/<int:friend_id>')
+def delete(friend_id):
+    Friend.delete(friend_id)
     return redirect('/')
 
 if __name__ == "__main__":

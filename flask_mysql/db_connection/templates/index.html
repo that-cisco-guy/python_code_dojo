@@ -9,6 +9,7 @@
 <body>
     <h1>All my friends</h1>
     {% for one_friend in all_friends %}
+        <p>ID: {{one_friend.id}}</p>
         <p>First Name: {{one_friend.first_name}}</p>
         <p>Last Name: {{one_friend.last_name}}</p>
         <p>Occupation: {{one_friend.occupation}}</p>
@@ -24,6 +25,19 @@
         <label for="occ" >Occupation:</label>
         <input type="text" name="occupation">
         <input type="submit" value="Add Friend">
-    </form> 
+    </form>
+
+    <h1>Update a Friend</h1>
+    <form action="/friends/update" method="POST">
+        <label for="id">ID:</label>
+        <input type="int" name="id">
+        <label for="fname">First Name:</label>
+        <input type="text" name="first_name">
+        <label for="lname">Last Name:</label>
+        <input type="text" name="last_name">
+        <label for="occ" >Occupation:</label>
+        <input type="text" name="occupation">
+        <input type="submit" value="Update Friend">
+    </form>
 </body>
 </html>
