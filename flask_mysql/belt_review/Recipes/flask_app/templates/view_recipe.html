@@ -4,27 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>View Recipe</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>View Recipe</h1>
-    <a href="/dashboard" style="height: 70%;">Dashboard</a>
-    <a href="/user/logout" style="height: 70%;">Logout</a>
-    <h2>{{recipe.name}}</h2>
-    <p>Posted by: {{recipe.creator.first_name}}</p>
-    <p>Description:</p>
-    <p>{{recipe.description}}</p>
-    <p>Under 30 Minutes?</p>
-    <p>
-        {% if recipe.under_30 == 1 %}
-            Yes
-        {% else %}
-            No
-        {% endif %}
-    </p>
-    <p>Instructions:</p>
-    <p>{{recipe.instructions}}</p>
-    <p>Date Made:</p>
-    <p>{{recipe.date_made.strftime('%B %dth, %Y')}}</p>
+    <div class="wrapper">
+        <a href="/dashboard"><button>Dashboard</button></a>
+        <div class="view">
+            <h1 class="page_title">View Recipe</h1>
+            <h2>{{recipe.name}}</h2>
+            <p>Posted by: {{recipe.creator.first_name}}</p>
+            <p>Description:</p>
+            <p>{{recipe.description}}</p>
+            <p>Under 30 Minutes?</p>
+            <p>
+                {% if recipe.under_30 == 1 %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </p>
+            <p>Instructions:</p>
+            <p>{{recipe.instructions}}</p>
+            <p>Date Made:</p>
+            <p>{{recipe.date_made.strftime('%B %dth, %Y')}}</p>
+        </div>
+        <a href="/user/logout"><button>Logout</button></a>
+    </div>
 </body>
 </html>

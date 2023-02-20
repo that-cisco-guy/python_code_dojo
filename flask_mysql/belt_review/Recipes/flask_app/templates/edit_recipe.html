@@ -5,33 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Recipe</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1 class="p-0 col-6">Edit Recipe {{recipe.id}}</h1>
-    <a href="/dashboard" style="height: 70%;">Dashboard</a>
-    <a href="/user/logout" style="height: 70%;">Logout</a>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <p>{{message}}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    <form action="/recipes/edit/process/{{recipe.id}}" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="{{recipe.name}}">
-        <label for="description">Description:</label>
-        <textarea name="description" id="description">{{recipe.description}}</textarea>
-        <label for="instructions">Instructions:</label>
-        <textarea name="instructions" id="instructions">{{recipe.instructions}}</textarea>
-        <label for="date_made">Date Made On:</label>
-        <input type="date" name="date_made" id="date_made" value="{{recipe.date_made}}">
-        <p>Under 30 Minutes?:</p>
-        <input type="radio" name="under_30" id="under_30" value="1" class="form-check-input" {% if recipe.under_30 == 1 %}checked{% endif %}>
-        <label for="under_30">Yes</label>
-        <input type="radio" name="under_30" id="under_30" value="0" class="form-check-input" {% if recipe.under_30 == 0 %}checked{% endif %}>
-        <label for="under_30">No</label>
-        <button type="submit" class="btn btn-success mt-2 border border-1">Update</button>
-    </form>
+    <div class="wrapper">
+        <a href="/dashboard"><button>Dashboard</button></a>
+        <div class="view">
+            <h1 class="page_title">Edit Recipe {{recipe.name}}</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/recipes/edit/process/{{recipe.id}}" method="post">
+                <input type="text" name="name" id="name" value="{{recipe.name}}">
+                <div class="text_area">
+                    <textarea name="description" id="description">{{recipe.description}}</textarea>
+                    <textarea name="instructions" id="instructions">{{recipe.instructions}}</textarea>
+                </div>
+                <label for="date_made">Date Made On:</label>
+                <input type="date" name="date_made" id="date_made" value="{{recipe.date_made}}">
+                <div class="under_30">
+                    <p>Under 30 Minutes?:</p>
+                    <input type="radio" name="under_30" id="under_30" value="1" class="form-check-input" {% if recipe.under_30 == 1 %}checked{% endif %}>
+                    <label for="under_30">Yes</label>
+                    <input type="radio" name="under_30" id="under_30" value="0" class="form-check-input" {% if recipe.under_30 == 0 %}checked{% endif %}>
+                    <label for="under_30">No</label>
+                </div>
+                <button type="submit" class="btn btn-success mt-2 border border-1">Update</button>
+            </form>
+        </div>
+        <a href="/user/logout"><button>Logout</button></a>
+    </div>
 </body>
 </html>
